@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+.App {
+  font-family: arial, sans-serif;
+  border: 1px solid #dadde1;
+  border-radius: 4px;
+  max-width: 600px;
+  margin: 30px auto;
+}
