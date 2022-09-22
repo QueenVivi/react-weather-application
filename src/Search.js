@@ -15,10 +15,32 @@ export default function Search() {
 
   function displayWeather(response) {
     setWeatherData(response.data);
+    console.log(response.data);
   }
 
   function showCity(event) {
     setCity(event.target.value);
+  }
+
+  function formatDate(seconds) {
+    let dtObj = new Date(seconds * 1000);
+    let day = dtObj.getDay();
+    let weekDay = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    let dayOfWeek = weekDay[day];
+    let hour = dtObj.getHours();
+    let minutes = dtObj.getMinutes();
+    if (minutes < 10) {
+      minutes = "0" + minutes;
+    }
+    return `${dayOfWeek}, ${hour}:${minutes}`;
   }
 
   return (
@@ -44,9 +66,13 @@ export default function Search() {
         </div>
       </form>
       {weatherData && (
-        <p>
-          It is {Math.round(weatherData.main.temp)} degree in {city}.
-        </p>
+        <div className="overview">
+          <h1>{city}</h1>
+          <ul>
+            <li>{formatDate(weatherData.dt)}</li>
+            <li>{weatherData.weather[0].description}</li>
+          </ul>
+        </div>
       )}
     </div>
   );
