@@ -66,12 +66,34 @@ export default function Search() {
         </div>
       </form>
       {weatherData && (
-        <div className="overview">
-          <h1>{city}</h1>
-          <ul>
-            <li>{formatDate(weatherData.dt)}</li>
-            <li>{weatherData.weather[0].description}</li>
-          </ul>
+        <div className="weatherCondition">
+          <div className="overview">
+            <h1>{city}</h1>
+            <ul>
+              <li>{formatDate(weatherData.dt)}</li>
+              <li>{weatherData.weather[0].description}</li>
+            </ul>
+          </div>
+          <div className="row">
+            <div className="col-6 hstack">
+              <img
+                src={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png`}
+              />
+              <div>
+                <span className="temperature">
+                  {" "}
+                  {Math.round(weatherData.main.temp)}{" "}
+                </span>
+                <span>°C</span>
+              </div>
+            </div>
+            <div className="col-6">
+              <ul>
+                <li>Humidity: {weatherData.main.humidity}%</li>
+                <li>Wind: {weatherData.wind.speed}kmp</li>
+              </ul>
+            </div>
+          </div>
         </div>
       )}
     </div>
