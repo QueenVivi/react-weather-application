@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import WeatherForecast from "./WeatherForecast";
 import "./Search.css";
 
 export default function Search(props) {
@@ -89,6 +90,7 @@ export default function Search(props) {
             <div className="col-6 hstack">
               <img
                 src={`http://openweathermap.org/img/wn/${weatherData.data.weather[0].icon}.png`}
+                alt={`icon: ${weatherData.data.weather[0].description}`}
               />
               <div>
                 <span className="temperature">
@@ -108,7 +110,9 @@ export default function Search(props) {
         </div>
       </div>
     );
-  } else {
+  } 
+  <WeatherForecast />
+  else {
     search();
     return "Loading...";
   }
