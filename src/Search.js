@@ -83,7 +83,9 @@ export default function Search(props) {
                   weatherData.data.timezone * 1000
                 )}
               </li>
-              <li>{weatherData.data.weather[0].description}</li>
+              <li class="text-capitalize">
+                {weatherData.data.weather[0].description}
+              </li>
             </ul>
           </div>
           <div className="row">
@@ -107,12 +109,11 @@ export default function Search(props) {
               </ul>
             </div>
           </div>
+          <WeatherForecast />
         </div>
       </div>
     );
-  } 
-  <WeatherForecast />
-  else {
+  } else {
     search();
     return "Loading...";
   }
