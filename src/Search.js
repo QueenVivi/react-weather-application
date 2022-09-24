@@ -83,7 +83,7 @@ export default function Search(props) {
                   weatherData.data.timezone * 1000
                 )}
               </li>
-              <li class="text-capitalize">
+              <li className="text-capitalize">
                 {weatherData.data.weather[0].description}
               </li>
             </ul>
@@ -91,7 +91,7 @@ export default function Search(props) {
           <div className="row">
             <div className="col-6 hstack">
               <img
-                src={`http://openweathermap.org/img/wn/${weatherData.data.weather[0].icon}.png`}
+                src={`http://openweathermap.org/img/wn/${weatherData.data.weather[0].icon}@2x.png`}
                 alt={`icon: ${weatherData.data.weather[0].description}`}
               />
               <div>
@@ -109,7 +109,7 @@ export default function Search(props) {
               </ul>
             </div>
           </div>
-          <WeatherForecast />
+          <WeatherForecast coords={weatherData.data.coord} />
         </div>
       </div>
     );
