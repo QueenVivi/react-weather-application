@@ -19,12 +19,21 @@ export default function WeatherForecast(props) {
     setReady(true);
   }
 
+  function formatDay(timestamp) {
+    const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const dt = new Date(timestamp);
+    const day = dt.getDay();
+    return weekDays[day];
+  }
+
   if (ready) {
     return (
       <div className="WeatherForecast">
         <div className="row">
           <div className="col-2">
-            <div className="WeatherForecast-day">{weatherDaily[0].dt}</div>
+            <div className="WeatherForecast-day">
+              {formatDay(weatherDaily[0].dt * 1000)}
+            </div>
             <div className="WeatherForecast-icon">
               <img
                 src={`http://openweathermap.org/img/wn/${weatherDaily[0].weather[0].icon}.png`}
