@@ -7,7 +7,9 @@ export default function App() {
   return (
     <div className="App">
       <div className="container">
-        <Search defaultCity="Sydney" />
+        <div className="App-border">
+          <Search defaultCity="Sydney" />
+        </div>
         <footer>
           <a
             href="https://github.com/QueenVivi/react-weather-application"

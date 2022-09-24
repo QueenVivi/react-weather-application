@@ -29,11 +29,11 @@ export default function WeatherForecast(props) {
   if (ready) {
     return (
       <div className="WeatherForecast">
-        <div className="row">
+        <div className="hstack gap-5">
           {weatherDaily.map(function(forecast, index) {
             if (index < 5) {
               return (
-                <div className="col-2">
+                <div>
                   <div className="WeatherForecast-day">
                     {formatDay(forecast.dt * 1000)}
                   </div>
