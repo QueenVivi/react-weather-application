@@ -30,28 +30,30 @@ export default function WeatherForecast(props) {
     return (
       <div className="WeatherForecast">
         <div className="row">
-          {weatherDaily.map(function(forecast) {
-            return (
-              <div className="col-2">
-                <div className="WeatherForecast-day">
-                  {formatDay(forecast.dt * 1000)}
+          {weatherDaily.map(function(forecast, index) {
+            if (index < 5) {
+              return (
+                <div className="col-2">
+                  <div className="WeatherForecast-day">
+                    {formatDay(forecast.dt * 1000)}
+                  </div>
+                  <div className="WeatherForecast-icon">
+                    <img
+                      src={`http://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`}
+                      alt={`icon: ${forecast.weather[0].description}`}
+                    />
+                  </div>
+                  <div className="WeatherForecast-temp">
+                    <span className="WeatherForecast-temp-max">
+                      {Math.round(forecast.temp.max)}°
+                    </span>
+                    <span className="WeatherForecast-temp-min">
+                      {Math.round(forecast.temp.min)}°
+                    </span>
+                  </div>
                 </div>
-                <div className="WeatherForecast-icon">
-                  <img
-                    src={`http://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`}
-                    alt={`icon: ${forecast.weather[0].description}`}
-                  />
-                </div>
-                <div className="WeatherForecast-temp">
-                  <span className="WeatherForecast-temp-max">
-                    {Math.round(forecast.temp.max)}°C
-                  </span>
-                  <span className="WeatherForecast-temp-min">
-                    {Math.round(forecast.temp.min)}°C
-                  </span>
-                </div>
-              </div>
-            );
+              );
+            }
           })}
         </div>
       </div>
